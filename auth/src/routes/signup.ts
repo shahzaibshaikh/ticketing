@@ -1,9 +1,14 @@
 import express from "express";
+import { body } from "express-validator";
 
 const router = express.Router();
 
 router.post("/api/users/signup", (req, res) => {
-  res.send("Hi there.");
+  const { email, password } = req.body;
+
+  if (!email || typeof email !== "string") {
+    res.status(400).send({});
+  }
 });
 
 export { router as signupRouter };
