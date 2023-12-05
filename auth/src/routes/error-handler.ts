@@ -12,11 +12,11 @@ export const errorHandler = (
     const formattedError = err.errors.map(error => {
       return { message: error.msg, field: error.type === "field" && error.path };
     });
-    return res.status(400).send({ errors: formattedError });
+    return res.status(err.statusCode).send({ errors: err.serializeError() });
   }
 
   if (err instanceof DatabaseConnectionError) {
-    return res.status(500).send({ errors: [{ message: err.reason }] });
+    return res.status(err.statusCode).send({ errors: err.serializeError() });
   }
 
   res.status(400).send({
