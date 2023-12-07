@@ -1,4 +1,13 @@
-import mongoose from "mongoose";
+import mongoose, { Mongoose } from "mongoose";
+
+interface UserAttributes {
+  email: string;
+  password: string;
+}
+
+interface UserModel extends mongoose.Model<any> {
+  build(user: UserAttributes): any;
+}
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -11,6 +20,10 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-const User = mongoose.model("User", userSchema);
+userSchema.statics.build = (user: UserAttributes) => {
+  return new User(user);
+};
+
+const User = mongoose.model<any, UserModel>("User", userSchema);
 
 export { User };
