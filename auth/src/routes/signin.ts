@@ -21,13 +21,13 @@ router.post(
 
     const existingUser = await User.findOne({ email });
     if (!existingUser) {
-      throw new BadRequestError("Invalid credentials");
+      throw new BadRequestError("Invalid credentials user not found");
     }
 
-    const passwordMatch = await Password.compare(existingUser.password, password);
+    const passwordMatch = await Password.compare(password, existingUser.password);
 
     if (!passwordMatch) {
-      throw new BadRequestError("Invalid credentials");
+      throw new BadRequestError("Invalid credentials password not match");
     }
 
     const token = jwt.sign(

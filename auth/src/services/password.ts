@@ -6,8 +6,8 @@ export class Password {
     return bcrypt.hash(password, saltRounds);
   }
 
-  static async compare(storedPassword: string, suppliedPassword: string) {
-    const match = await bcrypt.compare(storedPassword, suppliedPassword);
+  static async compare(suppliedPassword: string, storedPassword: string) {
+    const match = await bcrypt.compare(suppliedPassword, storedPassword);
     return match;
   }
 }
