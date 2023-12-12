@@ -4,8 +4,13 @@ const signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const onSubmit = event => {
+    event.preventDefault();
+    console.log(email, password);
+  };
+
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <h1>Sign Up</h1>
       <div className='form-group'>
         <label>Email Address</label>
