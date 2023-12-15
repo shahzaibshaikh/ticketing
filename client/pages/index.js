@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 
 const LandingPage = ({ currentUser }) => {
+  console.log(currentUser);
   return <div>Index Route</div>;
 };
 
