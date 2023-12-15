@@ -7,9 +7,18 @@ export default useRequest = ({ url, method, body }) => {
   const doRequest = async () => {
     try {
       const response = await axios[method](url, body);
-      console.log(response.data);
+      return response.data;
     } catch (error) {
-      setErrors(error.response.data.errors);
+      setErrors(
+        <div className='alert alert-danger my-2'>
+          <h4>Oops...</h4>
+          <ul className='my-0'>
+            {error.response.data.errors.map(error => (
+              <li key={error.message}>{error.message}</li>
+            ))}
+          </ul>
+        </div>
+      );
     }
   };
 
