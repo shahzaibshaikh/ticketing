@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
-export default useRequest = ({ url, method, body }) => {
+const useRequest = ({ url, method, body }) => {
   const [errors, setErrors] = useState(null);
 
   const doRequest = async () => {
@@ -24,3 +24,5 @@ export default useRequest = ({ url, method, body }) => {
 
   return { doRequest, errors };
 };
+
+export default useRequest;
