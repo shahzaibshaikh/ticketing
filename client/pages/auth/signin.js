@@ -14,7 +14,7 @@ const signin = () => {
       email,
       password
     },
-    onSuccess: () => router.push("/")
+    onSuccess: () => router.push("/
   });
 
   const onSubmit = async event => {
