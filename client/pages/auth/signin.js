@@ -25,7 +25,7 @@ const signin = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <h1>Sign Up</h1>
+      <h1>Sign In</h1>
       <div className='form-group'>
         <label>Email Address</label>
         <input
@@ -44,9 +44,9 @@ const signin = () => {
         />
       </div>
       {errors}
-      <button className='btn btn-primary'>Sign Up</button>
+      <button className='btn btn-primary'>Sign In</button>
     </form>
   );
 };
 
-export default signup;
+export default signin;
