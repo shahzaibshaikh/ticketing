@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css";
+import buildClient from "../api/buildClient";
 
-const _app = ({ Component, pageProps }) => {
+const AppComponent = ({ Component, pageProps }) => {
   return (
     <div>
       <h1>Header!</h1>
@@ -9,4 +10,11 @@ const _app = ({ Component, pageProps }) => {
   );
 };
 
-export default _app;
+AppComponent.getInitialProps = appContext => {
+  const client = buildClient(appContext.ctx);
+  const { data } = client.get("/api/users/currentuser");
+
+  return data;
+};
+
+export default AppComponent;
