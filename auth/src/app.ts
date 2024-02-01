@@ -6,7 +6,7 @@ import { currentUserRouter } from "./routes/current-user";
 import { signinRouter } from "./routes/signin";
 import { signoutRouter } from "./routes/signout";
 import { signupRouter } from "./routes/signup";
-import { errorHandler } from "./errors/error-handler";
+import { errorHandler } from "../../../ticketing-common/src/errors/error-handler";
 import { NotFoundError } from "@shahzaibshaikh-ticketing/common";
 
 const app = express();
