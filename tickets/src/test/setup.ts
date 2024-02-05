@@ -3,11 +3,7 @@ import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 
 declare global {
-  namespace NodeJS {
-    interface Global {
-      signin: () => string[];
-    }
-  }
+  function signin(): string[];
 }
 
 let mongo: any;
@@ -47,5 +43,5 @@ global.signin = () => {
 
   const base64 = Buffer.from(sessionJSON).toString("base64");
 
-  return [`express:sess=${base64}`];
+  return [`session=${base64}`];
 };
