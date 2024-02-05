@@ -1,6 +1,7 @@
 import cookieSession from "cookie-session";
 import express from "express";
 import bodyParser from "body-parser";
+import { createTicketRouter } from "./routes/new";
 
 import { NotFoundError, errorHandler } from "@shahzaibshaikh-ticketing/common";
 
@@ -13,6 +14,8 @@ app.use(
     secure: process.env.NODE_ENV !== "test"
   })
 );
+
+app.use(createTicketRouter);
 
 app.all("*", async () => {
   throw new NotFoundError();
