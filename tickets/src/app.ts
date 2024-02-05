@@ -3,7 +3,11 @@ import express from "express";
 import bodyParser from "body-parser";
 import { createTicketRouter } from "./routes/new";
 
-import { NotFoundError, errorHandler } from "@shahzaibshaikh-ticketing/common";
+import {
+  NotFoundError,
+  errorHandler,
+  currentUser
+} from "@shahzaibshaikh-ticketing/common";
 
 const app = express();
 app.set("trust proxy", true);
@@ -14,6 +18,8 @@ app.use(
     secure: process.env.NODE_ENV !== "test"
   })
 );
+
+app.use(currentUser);
 
 app.use(createTicketRouter);
 
